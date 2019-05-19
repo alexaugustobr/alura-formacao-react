@@ -60,3 +60,5 @@ typings/
 # next.js build output
 .next
 cdcreact-1.0.0-SNAPSHOT.jar
+alura-react-parte-1/package-lock.json
+alura-react-parte-1/cdc-admin/package-lock.json

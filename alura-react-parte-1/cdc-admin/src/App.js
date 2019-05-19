@@ -1,32 +1,28 @@
 import React, { Component } from 'react';
 import './App.css';
-import './css/pure-min.css'
-import './css/side-menu.css'
+import './css/pure-min.css';
+import './css/side-menu.css';
+import $ from 'jquery'; 
 
 class App extends Component {
 
   constructor() {
-    super()
-    this.state = {
-      lista: [
-        {
-          nome: 'alberto',
-          email: 'email@gmail.com',
-          senha: '123456'
-        },
-        {
-          nome: 'alberto',
-          email: 'email@gmail.com',
-          senha: '123456'
-        },
-        {
-          nome: 'alberto',
-          email: 'email@gmail.com',
-          senha: '123456'
-        }
-      ]
-    };
-  }
+		super()
+		this.apiBaseUrl = 'http://cdc-react.herokuapp.com';
+		this.state = {lista: []};
+	}
+
+	componentWillMount() {
+		console.log(`${this.apiBaseUrl}/api/autores`);
+		$.ajax({
+			url: `${this.apiBaseUrl}/api/autores`,
+			dataType: 'json',
+			success: function(resposta){
+				console.log(`${this.apiBaseUrl}/api/autores`);
+				this.setState({ lista:resposta });
+			}.bind(this)
+		})
+	}
 
   render() {
     return (
